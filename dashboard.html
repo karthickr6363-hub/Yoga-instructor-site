@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Serenity Yoga</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="alternate icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, rgba(247, 239, 230, 0.3) 0%, rgba(255, 255, 255, 0.8) 100%);
+        min-height: 100vh;
+      }
+
+      .dashboard-brand-header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 2px solid rgba(164, 105, 70, 0.1);
+        padding: 1.5rem 6vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 10px rgba(92, 68, 44, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .dashboard-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+        color: inherit;
+        transition: opacity 0.2s ease;
+      }
+
+      .dashboard-brand:hover {
+        opacity: 0.8;
+      }
+
+      .dashboard-brand .logo-mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #252120;
+        color: #f7efe6;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+
+      .dashboard-brand .logo-text {
+        font-weight: 600;
+        font-size: 1.3rem;
+        letter-spacing: 0.03em;
+        color: #252120;
+      }
+
+      .dashboard-wrapper {
+        padding: 2rem 6vw;
+      }
+
+      .dashboard-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* Header Section */
+      .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+        padding: 2rem 0;
+        border-bottom: 2px solid rgba(164, 105, 70, 0.1);
+      }
+
+      .dashboard-header-content h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin: 0 0 0.5rem;
+        color: #252120;
+        font-weight: 700;
+      }
+
+      .dashboard-header-content p {
+        color: rgba(37, 33, 32, 0.7);
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .logout-btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        color: #a46946;
+        border: 2px solid #a46946;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(164, 105, 70, 0.1);
+      }
+
+      .logout-btn:hover {
+        background: #a46946;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(164, 105, 70, 0.3);
+      }
+
+      .logout-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* Profile Section */
+      .profile-section {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(247, 239, 230, 0.8));
+        border-radius: 24px;
+        padding: 2.5rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 8px 32px rgba(92, 68, 44, 0.1);
+        border: 1px solid rgba(164, 105, 70, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .profile-avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #a46946, #8f5738);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 8px 24px rgba(164, 105, 70, 0.3);
+        border: 4px solid rgba(255, 255, 255, 0.9);
+      }
+
+      .profile-info h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        margin: 0 0 0.5rem;
+        color: #252120;
+      }
+
+      .profile-info p {
+        margin: 0;
+        color: rgba(37, 33, 32, 0.7);
+        font-size: 1rem;
+      }
+
+      .profile-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(164, 105, 70, 0.1);
+        border-radius: 50px;
+        color: #a46946;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      /* Stats Grid */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .stat-box {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        border: 2px solid rgba(164, 105, 70, 0.1);
+        box-shadow: 0 4px 20px rgba(92, 68, 44, 0.08);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #a46946, #8f5738);
+      }
+
+      .stat-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(92, 68, 44, 0.15);
+        border-color: rgba(164, 105, 70, 0.3);
+      }
+
+      .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .stat-box .number {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: #a46946;
+        margin: 0 0 0.5rem;
+        line-height: 1;
+      }
+
+      .stat-box .label {
+        font-size: 1rem;
+        color: rgba(37, 33, 32, 0.8);
+        margin: 0;
+        font-weight: 500;
+      }
+
+      .stat-trend {
+        font-size: 0.85rem;
+        color: #2e7d32;
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+      }
+
+      /* Main Content Grid */
+      .dashboard-main-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .dashboard-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 24px;
+        padding: 2.5rem;
+        box-shadow: 0 8px 32px rgba(92, 68, 44, 0.1);
+        border: 1px solid rgba(164, 105, 70, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .dashboard-card:hover {
+        box-shadow: 0 12px 40px rgba(92, 68, 44, 0.15);
+        transform: translateY(-2px);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid rgba(164, 105, 70, 0.1);
+      }
+
+      .card-header h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.75rem;
+        margin: 0;
+        color: #252120;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .card-icon {
+        font-size: 2rem;
+      }
+
+      .view-all-link {
+        color: #a46946;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+      }
+
+      .view-all-link:hover {
+        color: #8f5738;
+        text-decoration: underline;
+      }
+
+      /* Upcoming Classes */
+      .upcoming-classes {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .upcoming-classes li {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(37, 33, 32, 0.08);
+        transition: background 0.2s ease;
+      }
+
+      .upcoming-classes li:last-child {
+        border-bottom: none;
+      }
+
+      .upcoming-classes li:hover {
+        background: rgba(164, 105, 70, 0.03);
+        margin: 0 -2.5rem;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        border-radius: 12px;
+      }
+
+      .class-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .class-info {
+        flex: 1;
+      }
+
+      .class-info h3 {
+        font-size: 1.2rem;
+        margin: 0 0 0.5rem;
+        color: #252120;
+        font-weight: 600;
+      }
+
+      .class-info p {
+        margin: 0 0 0.5rem;
+        font-size: 0.95rem;
+        color: rgba(37, 33, 32, 0.7);
+      }
+
+      .class-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+        color: rgba(37, 33, 32, 0.6);
+      }
+
+      .class-status {
+        padding: 0.5rem 1.2rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .class-status.confirmed {
+        background: rgba(46, 125, 50, 0.15);
+        color: #2e7d32;
+      }
+
+      .class-status.pending {
+        background: rgba(255, 152, 0, 0.15);
+        color: #f57c00;
+      }
+
+      /* Progress Section */
+      .progress-item {
+        margin-bottom: 2rem;
+      }
+
+      .progress-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+      }
+
+      .progress-label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #252120;
+      }
+
+      .progress-value {
+        font-weight: 700;
+        color: #a46946;
+        font-size: 1.1rem;
+      }
+
+      .progress-bar {
+        background: rgba(37, 33, 32, 0.1);
+        border-radius: 12px;
+        height: 12px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .progress-fill {
+        background: linear-gradient(90deg, #a46946, #8f5738);
+        height: 100%;
+        border-radius: 12px;
+        transition: width 0.5s ease;
+        position: relative;
+      }
+
+      .progress-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+
+      /* Membership Card */
+      .membership-info {
+        background: linear-gradient(135deg, rgba(164, 105, 70, 0.1), rgba(164, 105, 70, 0.05));
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border: 2px solid rgba(164, 105, 70, 0.2);
+      }
+
+      .membership-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(164, 105, 70, 0.1);
+      }
+
+      .membership-row:last-child {
+        border-bottom: none;
+      }
+
+      .membership-label {
+        font-size: 0.95rem;
+        color: rgba(37, 33, 32, 0.7);
+      }
+
+      .membership-value {
+        font-weight: 600;
+        color: #252120;
+      }
+
+      .membership-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.8rem;
+        background: rgba(46, 125, 50, 0.15);
+        color: #2e7d32;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .action-btn {
+        padding: 0.9rem 1.8rem;
+        border-radius: 12px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+      }
+
+      .action-btn.primary {
+        background: linear-gradient(135deg, #a46946, #8f5738);
+        color: white;
+        box-shadow: 0 4px 16px rgba(164, 105, 70, 0.3);
+      }
+
+      .action-btn.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(164, 105, 70, 0.4);
+      }
+
+      .action-btn.secondary {
+        background: rgba(255, 255, 255, 0.9);
+        color: #a46946;
+        border: 2px solid #a46946;
+      }
+
+      .action-btn.secondary:hover {
+        background: #a46946;
+        color: white;
+      }
+
+      /* Recent Activity */
+      .activity-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .activity-item {
+        display: flex;
+        gap: 1rem;
+        padding: 1.25rem 0;
+        border-bottom: 1px solid rgba(37, 33, 32, 0.08);
+      }
+
+      .activity-item:last-child {
+        border-bottom: none;
+      }
+
+      .activity-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .activity-icon.completed {
+        background: rgba(46, 125, 50, 0.15);
+      }
+
+      .activity-icon.booked {
+        background: rgba(164, 105, 70, 0.15);
+      }
+
+      .activity-content {
+        flex: 1;
+      }
+
+      .activity-content h4 {
+        font-size: 1rem;
+        margin: 0 0 0.3rem;
+        color: #252120;
+        font-weight: 600;
+      }
+
+      .activity-content p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: rgba(37, 33, 32, 0.6);
+      }
+
+      /* Quick Actions */
+      .quick-actions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .quick-action-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        border: 2px solid rgba(164, 105, 70, 0.1);
+        box-shadow: 0 4px 20px rgba(92, 68, 44, 0.08);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .quick-action-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(92, 68, 44, 0.15);
+        border-color: rgba(164, 105, 70, 0.3);
+      }
+
+      .quick-action-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .quick-action-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        margin: 0 0 0.5rem;
+        color: #252120;
+      }
+
+      .quick-action-card p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: rgba(37, 33, 32, 0.7);
+      }
+
+      /* Floating Action Button */
+      .fab {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #a46946, #8f5738);
+        color: white;
+        border: none;
+        font-size: 2rem;
+        font-weight: 300;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(164, 105, 70, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 100;
+        line-height: 1;
+      }
+
+      .fab:hover {
+        transform: scale(1.1) rotate(90deg);
+        box-shadow: 0 12px 32px rgba(164, 105, 70, 0.5);
+      }
+
+      .fab:active {
+        transform: scale(1.05) rotate(90deg);
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .dashboard-main-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 960px) {
+        .dashboard-wrapper {
+          padding: 1.5rem 5vw;
+        }
+
+        .profile-section {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .profile-header {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .dashboard-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.5rem;
+        }
+
+        .header-actions {
+          width: 100%;
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .quick-actions-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .fab {
+          width: 56px;
+          height: 56px;
+          font-size: 1.8rem;
+          bottom: 1.5rem;
+          right: 1.5rem;
+        }
+
+        .dashboard-card {
+          padding: 1.5rem;
+        }
+
+        .card-header h2 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Brand Header -->
+    <div class="dashboard-brand-header">
+      <a href="index.html" class="dashboard-brand">
+        <div class="logo-mark">S</div>
+        <span class="logo-text">Serenity Yoga</span>
+      </a>
+      <a href="index.html" class="logout-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        <span>Logout</span>
+      </a>
+    </div>
+
+    <div class="dashboard-wrapper">
+      <div class="dashboard-container">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+          <div class="dashboard-header-content">
+            <h1>Welcome Back!</h1>
+            <p>Here's an overview of your yoga journey</p>
+          </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="profile-section">
+          <div class="profile-header">
+            <div class="profile-avatar">SY</div>
+            <div class="profile-info">
+              <h2>Serenity Yoga</h2>
+              <p>Member since January 2023</p>
+              <div class="profile-badge">
+                <span>⭐</span>
+                <span>Active Member</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-icon">📊</span>
+            <div class="number">24</div>
+            <p class="label">Classes Attended</p>
+            <div class="stat-trend">
+              <span>↑</span>
+              <span>+3 this month</span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon">📅</span>
+            <div class="number">8</div>
+            <p class="label">Upcoming Classes</p>
+            <div class="stat-trend">
+              <span>→</span>
+              <span>Next: Tomorrow</span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon">⏱️</span>
+            <div class="number">156</div>
+            <p class="label">Practice Hours</p>
+            <div class="stat-trend">
+              <span>↑</span>
+              <span>+12 this month</span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon">🔥</span>
+            <div class="number">5</div>
+            <p class="label">Day Streak</p>
+            <div class="stat-trend">
+              <span>🔥</span>
+              <span>Keep it up!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="dashboard-main-grid">
+          <!-- Left Column -->
+          <div>
+            <!-- Upcoming Classes Card -->
+            <div class="dashboard-card">
+              <div class="card-header">
+                <h2>
+                  <span class="card-icon">📅</span>
+                  Upcoming Classes
+                </h2>
+                <a href="schedule.html" class="view-all-link">View All →</a>
+              </div>
+              <ul class="upcoming-classes">
+                <li>
+                  <div class="class-item">
+                    <div class="class-info">
+                      <h3>Morning Grounding</h3>
+                      <p>Iyengar-inspired gentle flow</p>
+                      <div class="class-time">
+                        <span>🕐</span>
+                        <span>Tuesday, March 15 · 7:00 AM</span>
+                      </div>
+                    </div>
+                    <span class="class-status confirmed">Confirmed</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="class-item">
+                    <div class="class-info">
+                      <h3>Alignment Essentials</h3>
+                      <p>Foundational postures with props</p>
+                      <div class="class-time">
+                        <span>🕐</span>
+                        <span>Wednesday, March 16 · 6:00 PM</span>
+                      </div>
+                    </div>
+                    <span class="class-status confirmed">Confirmed</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="class-item">
+                    <div class="class-info">
+                      <h3>Sunday Reset</h3>
+                      <p>Deep rest and restoration</p>
+                      <div class="class-time">
+                        <span>🕐</span>
+                        <span>Sunday, March 20 · 5:00 PM</span>
+                      </div>
+                    </div>
+                    <span class="class-status pending">Pending</span>
+                  </div>
+                </li>
+              </ul>
+              <a href="booking.html" class="action-btn primary">Book New Class</a>
+            </div>
+
+            <!-- Progress Card -->
+            <div class="dashboard-card" style="margin-top: 2rem;">
+              <div class="card-header">
+                <h2>
+                  <span class="card-icon">📈</span>
+                  My Progress
+                </h2>
+              </div>
+              <div class="progress-item">
+                <div class="progress-header">
+                  <span class="progress-label">This Month</span>
+                  <span class="progress-value">12 classes</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 80%;"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-header">
+                  <span class="progress-label">Weekly Goal</span>
+                  <span class="progress-value">3/4 classes</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%;"></div>
+                </div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-header">
+                  <span class="progress-label">Current Streak</span>
+                  <span class="progress-value">5 days</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 50%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div>
+            <!-- Membership Card -->
+            <div class="dashboard-card">
+              <div class="card-header">
+                <h2>
+                  <span class="card-icon">💳</span>
+                  Membership
+                </h2>
+              </div>
+              <div class="membership-info">
+                <div class="membership-row">
+                  <span class="membership-label">Plan</span>
+                  <span class="membership-value">Monthly Unlimited</span>
+                </div>
+                <div class="membership-row">
+                  <span class="membership-label">Renews on</span>
+                  <span class="membership-value">April 1, 2024</span>
+                </div>
+                <div class="membership-row">
+                  <span class="membership-label">Status</span>
+                  <span class="membership-status">✓ Active</span>
+                </div>
+              </div>
+              <a href="booking.html" class="action-btn secondary">Manage Plan</a>
+            </div>
+
+            <!-- Recent Activity Card -->
+            <div class="dashboard-card" style="margin-top: 2rem;">
+              <div class="card-header">
+                <h2>
+                  <span class="card-icon">📝</span>
+                  Recent Activity
+                </h2>
+                <a href="#" class="view-all-link">View All →</a>
+              </div>
+              <ul class="activity-list">
+                <li class="activity-item">
+                  <div class="activity-icon completed">✓</div>
+                  <div class="activity-content">
+                    <h4>Completed: Morning Grounding</h4>
+                    <p>March 12, 2024 · 7:00 AM</p>
+                  </div>
+                </li>
+                <li class="activity-item">
+                  <div class="activity-icon completed">✓</div>
+                  <div class="activity-content">
+                    <h4>Completed: Alignment Essentials</h4>
+                    <p>March 10, 2024 · 6:00 PM</p>
+                  </div>
+                </li>
+                <li class="activity-item">
+                  <div class="activity-icon booked">📅</div>
+                  <div class="activity-content">
+                    <h4>Booked: Sunday Reset</h4>
+                    <p>March 8, 2024</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions-grid">
+          <a href="schedule.html" class="quick-action-card">
+            <span class="quick-action-icon">📋</span>
+            <h3>View Schedule</h3>
+            <p>See all available classes</p>
+          </a>
+          <a href="booking.html" class="quick-action-card">
+            <span class="quick-action-icon">➕</span>
+            <h3>Book a Class</h3>
+            <p>Reserve your spot</p>
+          </a>
+          <a href="online.html" class="quick-action-card">
+            <span class="quick-action-icon">💻</span>
+            <h3>Online Studio</h3>
+            <p>Join virtual sessions</p>
+          </a>
+          <a href="blog.html" class="quick-action-card">
+            <span class="quick-action-icon">📚</span>
+            <h3>Resources</h3>
+            <p>Yoga tips & guides</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <button class="fab" onclick="window.location.href='booking.html';" aria-label="Book a class">
+      +
+    </button>
+
+  </body>
+</html>
