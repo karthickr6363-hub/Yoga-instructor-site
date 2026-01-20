@@ -178,6 +178,7 @@ main {
   padding: 0;
   z-index: 25;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .menu-toggle span {
@@ -212,6 +213,7 @@ main {
   padding: 0.35rem 0.8rem 0.4rem;
   border-radius: 999px;
   transition: background-color 0.2s ease, color 0.2s ease;
+  text-align: center;
 }
 
 .main-nav a::after {
@@ -278,6 +280,7 @@ main {
 .nav-dropdown-toggle {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.3rem;
   cursor: pointer;
 }
@@ -329,6 +332,7 @@ main {
   transition: background-color 0.2s ease, color 0.2s ease;
   border-radius: 0;
   position: relative;
+  text-align: center;
 }
 
 .nav-dropdown-menu a::after {
@@ -752,51 +756,294 @@ textarea {
 }
 
 /* BLOG */
+/* Featured Post Section */
+.featured-post-section {
+  margin: 3rem 0 4rem;
+}
+
+.featured-post-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(92, 68, 44, 0.12);
+  border: 1px solid rgba(37, 33, 32, 0.08);
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(92, 68, 44, 0.18);
+}
+
+.featured-post-image {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-color: #e1d4c6;
+}
+
+.featured-post-content {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.post-category {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #a46946;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.featured-post-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin: 0 0 1rem;
+  color: #252120;
+  line-height: 1.2;
+}
+
+.post-footer {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  color: rgba(37, 33, 32, 0.7);
+}
+
+.post-date {
+  color: rgba(37, 33, 32, 0.7);
+}
+
+.read-time {
+  color: rgba(37, 33, 32, 0.7);
+}
+
+/* Blog Grid */
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.6rem;
+  gap: 2rem;
+  margin-bottom: 4rem;
 }
 
 .post-card {
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 16px;
-  padding: 1.4rem 1.5rem;
-  border: 1px solid rgba(37, 33, 32, 0.06);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(37, 33, 32, 0.08);
   text-align: left;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px rgba(92, 68, 44, 0.08);
+}
+
+.post-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(92, 68, 44, 0.15);
+}
+
+.post-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-color: #e1d4c6;
+}
+
+.post-content {
+  padding: 1.8rem 1.8rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.post-content .post-category {
+  margin-bottom: 0.5rem;
 }
 
 .post-card h3 {
-  margin: 0 0 0.4rem;
-  font-size: 1.1rem;
+  margin: 0.5rem 0 0.8rem;
+  font-size: 1.3rem;
+  font-family: "Playfair Display", serif;
+  color: #252120;
+  line-height: 1.3;
 }
 
 .post-meta {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+  color: rgba(37, 33, 32, 0.6);
+  font-weight: 500;
+}
+
+.post-footer-small {
+  margin-top: auto;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-footer-small .post-date {
+  font-size: 0.85rem;
+  color: rgba(37, 33, 32, 0.6);
 }
 
 .read-more-link {
-  display: block;
-  text-align: center;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
+  display: inline-block;
   color: #a46946;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
-  align-self: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  margin-top: 0.5rem;
 }
 
 .read-more-link:hover {
   color: #8f5738;
-  text-decoration: underline;
+  transform: translateX(5px);
+}
+
+/* Related Resources Section */
+.related-resources {
+  margin: 5rem 0;
+  padding: 3rem 0;
+  background: linear-gradient(135deg, rgba(233, 219, 200, 0.3), rgba(247, 239, 230, 0.5));
+  border-radius: 24px;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.resource-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 2rem 1.8rem;
+  text-align: center;
+  border: 1px solid rgba(37, 33, 32, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px rgba(92, 68, 44, 0.08);
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(92, 68, 44, 0.15);
+}
+
+.resource-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.resource-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  margin: 0 0 0.8rem;
+  color: #252120;
+}
+
+.resource-card p {
+  color: rgba(37, 33, 32, 0.85);
+  line-height: 1.7;
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+}
+
+.resource-card .text-link {
+  color: #a46946;
+  font-weight: 600;
+}
+
+.resource-card .text-link:hover {
+  color: #8f5738;
+}
+
+/* Blog Newsletter Section */
+.blog-newsletter {
+  margin: 4rem 0;
+}
+
+.newsletter-card {
+  background: linear-gradient(135deg, #a46946 0%, #8f5738 100%);
+  border-radius: 24px;
+  padding: 3.5rem 3rem;
+  text-align: center;
+  color: white;
+  box-shadow: 0 16px 40px rgba(164, 105, 70, 0.25);
+}
+
+.newsletter-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  margin: 0 0 1rem;
+  color: white;
+}
+
+.newsletter-content > p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0 0 2rem;
+  opacity: 0.95;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.newsletter-form-inline {
+  display: flex;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.newsletter-form-inline input {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.9rem 1.2rem;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  color: #252120;
+}
+
+.newsletter-form-inline input:focus {
+  outline: none;
+  border-color: white;
+  background: white;
+}
+
+.newsletter-form-inline .btn {
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.newsletter-note {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin: 0;
 }
 
 /* TESTIMONIALS PAGE */
@@ -1072,7 +1319,8 @@ textarea {
 }
 
 /* RESPONSIVE */
-@media (max-width: 960px) {
+/* iPad Pro and smaller devices */
+@media (max-width: 1024px) {
   main {
     padding: 4rem 5vw 3rem;
   }
@@ -1082,10 +1330,13 @@ textarea {
     align-items: center;
     justify-content: space-between;
     position: relative;
+    padding: 1.1rem 5vw;
   }
 
   .menu-toggle {
     display: flex;
+    width: 32px;
+    height: 32px;
   }
 
   .main-nav {
@@ -1103,12 +1354,15 @@ textarea {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    visibility: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease, visibility 0.3s ease;
+    display: flex;
   }
 
   .main-nav.nav-open {
     max-height: 1000px;
     opacity: 1;
+    visibility: visible;
     padding: 1.5rem 6vw;
     overflow: visible;
   }
@@ -1119,7 +1373,7 @@ textarea {
     width: 100%;
     border-radius: 8px;
     margin-bottom: 0.5rem;
-    text-align: left;
+    text-align: center;
   }
 
   .main-nav a.nav-btn,
@@ -1147,6 +1401,7 @@ textarea {
     pointer-events: auto;
     position: relative;
     z-index: 10;
+    justify-content: center;
   }
 
   .nav-dropdown-menu {
@@ -1185,6 +1440,7 @@ textarea {
     opacity: 1 !important;
     visibility: visible !important;
     white-space: nowrap;
+    text-align: center;
   }
 
   .hero {
@@ -1204,6 +1460,44 @@ textarea {
   .blog-grid,
   .testimonial-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .featured-post-card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-post-image {
+    min-height: 300px;
+  }
+
+  .featured-post-content {
+    padding: 2rem 2rem;
+  }
+
+  .featured-post-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .resources-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .newsletter-card {
+    padding: 2.5rem 2rem;
+  }
+
+  .newsletter-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .newsletter-form-inline {
+    flex-direction: column;
+  }
+
+  .newsletter-form-inline input {
+    width: 100%;
+    min-width: 100%;
   }
 
   .two-column {
@@ -1289,6 +1583,71 @@ textarea {
   .testimonial-list,
   .footer-columns {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .featured-post-card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-post-image {
+    min-height: 250px;
+  }
+
+  .featured-post-content {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .featured-post-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .post-image {
+    height: 180px;
+  }
+
+  .post-content {
+    padding: 1.5rem 1.5rem 1.2rem;
+  }
+
+  .post-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .resources-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .resource-card {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .newsletter-card {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .newsletter-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .newsletter-content > p {
+    font-size: 1rem;
+  }
+
+  .newsletter-form-inline {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .newsletter-form-inline input {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .newsletter-form-inline .btn {
+    width: 100%;
   }
 
   .footer-main {
@@ -1377,6 +1736,7 @@ textarea {
   gap: 1.8rem;
   max-width: 1000px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
 .value-card {
@@ -1386,6 +1746,11 @@ textarea {
   text-align: center;
   border: 1px solid rgba(37, 33, 32, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
 }
 
 .value-card:hover {
@@ -1397,6 +1762,7 @@ textarea {
   font-size: 3rem;
   margin-bottom: 1rem;
   display: block;
+  flex-shrink: 0;
 }
 
 .value-card h3 {
@@ -1404,12 +1770,16 @@ textarea {
   font-size: 1.3rem;
   margin: 0 0 0.8rem;
   color: #252120;
+  text-align: center;
+  width: 100%;
 }
 
 .value-card p {
   margin: 0;
   color: rgba(37, 33, 32, 0.85);
   line-height: 1.7;
+  text-align: center;
+  width: 100%;
 }
 
 /* ABOUT PAGE - PHILOSOPHY BANNER */
@@ -1456,6 +1826,7 @@ textarea {
   gap: 2rem;
   max-width: 1100px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
 .class-detail-card {
@@ -1465,6 +1836,13 @@ textarea {
   border: 1px solid rgba(37, 33, 32, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .class-detail-card:hover {
@@ -1482,6 +1860,8 @@ textarea {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
+  text-align: center;
+  width: auto;
 }
 
 .class-tag.gentle {
@@ -1509,6 +1889,10 @@ textarea {
   font-size: 1.5rem;
   margin: 0 0 0.4rem;
   color: #252120;
+  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .class-time {
@@ -1516,18 +1900,26 @@ textarea {
   color: #a46946;
   font-weight: 500;
   margin: 0 0 1rem;
+  text-align: center;
+  width: 100%;
 }
 
 .class-detail-card > p {
   color: rgba(37, 33, 32, 0.85);
   line-height: 1.7;
   margin: 0 0 1.2rem;
+  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .class-features {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
+  text-align: left;
 }
 
 .class-features li {
@@ -1536,6 +1928,8 @@ textarea {
   position: relative;
   color: rgba(37, 33, 32, 0.8);
   font-size: 0.95rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .class-features li::before {
@@ -2060,13 +2454,27 @@ textarea {
 }
 
 /* RESPONSIVE UPDATES FOR NEW SECTIONS */
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .values-grid,
   .class-details-grid,
   .pricing-section {
     margin: 4rem 0;
     padding: 3rem 0;
     border-radius: 24px;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .class-details-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .class-detail-card {
+    padding: 1.8rem 1.5rem;
   }
 
   .pricing-grid,
@@ -2105,6 +2513,73 @@ textarea {
     margin: 3rem 0;
     padding: 2.5rem 0;
     border-radius: 20px;
+  }
+
+  .values-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .class-details-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .class-detail-card {
+    padding: 1.5rem 1.2rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .class-detail-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .class-time {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .class-detail-card > p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .class-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.7rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .class-features {
+    font-size: 0.9rem;
+  }
+
+  .class-features li {
+    font-size: 0.9rem;
+    padding: 0.4rem 0;
+    padding-left: 1.3rem;
+  }
+
+  .value-card {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .value-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .value-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .value-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .pricing-grid,

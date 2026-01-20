@@ -22,9 +22,11 @@
         background: linear-gradient(135deg, rgba(164, 105, 70, 0.15) 0%, rgba(233, 219, 200, 0.3) 50%, rgba(247, 239, 230, 0.4) 100%),
                     url('https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
         border-radius: 0 0 40px 40px;
-        margin: -5rem -6vw 6rem;
+        margin: -80px 0 6rem 0;
         padding: 8rem 6vw;
         overflow: hidden;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
       }
 
       .home2-hero::before {
@@ -43,6 +45,7 @@
         text-align: center;
         max-width: 900px;
         margin: 0 auto;
+        margin-top: -100px;
         color: #252120;
       }
 
@@ -267,6 +270,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
+        align-items: stretch;
       }
 
       .class-showcase-card {
@@ -277,6 +281,11 @@
         box-shadow: 0 12px 40px rgba(92, 68, 44, 0.15);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border: 1px solid rgba(255, 255, 255, 0.8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100%;
       }
 
       .class-showcase-card:hover {
@@ -295,6 +304,7 @@
         justify-content: center;
         font-size: 2rem;
         box-shadow: 0 8px 24px rgba(164, 105, 70, 0.3);
+        flex-shrink: 0;
       }
 
       .class-showcase-card h3 {
@@ -302,6 +312,8 @@
         font-size: 1.6rem;
         margin: 0 0 0.8rem;
         color: #252120;
+        text-align: center;
+        width: 100%;
       }
 
       .class-showcase-card p {
@@ -309,6 +321,9 @@
         line-height: 1.7;
         color: rgba(37, 33, 32, 0.85);
         margin: 0 0 1.5rem;
+        text-align: center;
+        width: 100%;
+        flex-grow: 1;
       }
 
       .class-showcase-card .class-time {
@@ -319,7 +334,9 @@
         font-size: 0.9rem;
         color: #a46946;
         font-weight: 600;
-        margin-bottom: 1rem;
+        margin-top: auto;
+        text-align: center;
+        width: auto;
       }
 
       /* Testimonials Section */
@@ -451,11 +468,13 @@
       }
 
       /* Responsive */
-      @media (max-width: 960px) {
+      @media (max-width: 1024px) {
         .home2-hero {
           min-height: 70vh;
           padding: 6rem 5vw;
-          margin: -5rem -5vw 4rem;
+          margin: -80px 0 4rem 0;
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
         }
 
         .home2-stats {
@@ -489,6 +508,9 @@
           min-height: 60vh;
           padding: 5rem 4vw;
           border-radius: 0 0 24px 24px;
+          margin: -80px 0 4rem 0;
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
         }
 
         .home2-stats {
