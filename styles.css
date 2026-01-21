@@ -127,7 +127,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.1rem 6vw;
+  padding: 0 6vw;
+  min-height: 4.5rem;
   background-color: rgba(247, 239, 230, 0.9);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
@@ -142,6 +143,7 @@ main {
   color: inherit;
   cursor: pointer;
   transition: opacity 0.2s ease;
+  padding: 1.1rem 0;
 }
 
 .logo-area:hover {
@@ -206,6 +208,7 @@ main {
   display: flex;
   gap: 0.5rem;
   font-size: 0.95rem;
+  align-self: stretch;
 }
 
 .main-nav a {
@@ -213,6 +216,9 @@ main {
   padding: 0.35rem 0.8rem 0.4rem;
   border-radius: 999px;
   transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
@@ -229,52 +235,38 @@ main {
   color: #f7efe6;
 }
 
-.main-nav a.nav-btn {
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid #a46946;
-  color: #a46946;
-  font-weight: 600;
-  padding: 0.5rem 1.2rem;
-  border-radius: 999px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(164, 105, 70, 0.1);
-}
-
-.main-nav a.nav-btn::after {
-  display: none;
-}
-
-.main-nav a.nav-btn:hover {
-  background: #a46946;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(164, 105, 70, 0.3);
-}
-
+.main-nav a.nav-btn,
 .main-nav a.nav-btn-primary {
-  background: linear-gradient(135deg, #a46946, #8f5738);
-  border: 2px solid #a46946;
-  color: white;
-  font-weight: 600;
-  padding: 0.5rem 1.2rem;
-  border-radius: 999px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(164, 105, 70, 0.2);
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  font-weight: 500;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 0.85rem;
+  line-height: 1;
 }
 
-.main-nav a.nav-btn-primary::after {
-  display: none;
-}
-
+.main-nav a.nav-btn:hover,
 .main-nav a.nav-btn-primary:hover {
-  background: linear-gradient(135deg, #8f5738, #7a4a2f);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(164, 105, 70, 0.4);
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #111827;
+  transform: translateY(-1px);
 }
 
 /* NAVIGATION DROPDOWN */
 .nav-dropdown {
   position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .nav-dropdown-toggle {
@@ -297,7 +289,7 @@ main {
 
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: 100%;
   left: 0;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
@@ -325,7 +317,9 @@ main {
 }
 
 .nav-dropdown-menu a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.7rem 1.2rem;
   color: #252120;
   text-decoration: none;
@@ -418,11 +412,9 @@ main {
 
 .hero-media-left .tall {
   height: 220px;
-  background-image: linear-gradient(
-      135deg,
+  background-image: linear-gradient(135deg,
       rgba(247, 239, 230, 0.2),
-      rgba(0, 0, 0, 0.12)
-    ),
+      rgba(0, 0, 0, 0.12)),
     url("https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg?auto=compress&cs=tinysrgb&w=800");
 }
 
@@ -647,11 +639,9 @@ main {
   background-size: cover;
   background-position: center;
   background-color: #e1d4c6;
-  background-image: linear-gradient(
-      135deg,
+  background-image: linear-gradient(135deg,
       rgba(247, 239, 230, 0.2),
-      rgba(0, 0, 0, 0.16)
-    ),
+      rgba(0, 0, 0, 0.16)),
     url("https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg?auto=compress&cs=tinysrgb&w=800");
 }
 
@@ -997,7 +987,7 @@ textarea {
   color: white;
 }
 
-.newsletter-content > p {
+.newsletter-content>p {
   font-size: 1.1rem;
   line-height: 1.7;
   margin: 0 0 2rem;
@@ -1368,7 +1358,9 @@ textarea {
   }
 
   .main-nav a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.8rem 1rem;
     width: 100%;
     border-radius: 8px;
@@ -1632,7 +1624,7 @@ textarea {
     font-size: 1.6rem;
   }
 
-  .newsletter-content > p {
+  .newsletter-content>p {
     font-size: 1rem;
   }
 
@@ -1657,7 +1649,7 @@ textarea {
   .highlight-strip {
     padding: 2rem 1.5rem;
   }
-  
+
   .highlight-content {
     max-width: 100%;
   }
@@ -1904,7 +1896,7 @@ textarea {
   width: 100%;
 }
 
-.class-detail-card > p {
+.class-detail-card>p {
   color: rgba(37, 33, 32, 0.85);
   line-height: 1.7;
   margin: 0 0 1.2rem;
@@ -1995,11 +1987,9 @@ textarea {
   background-size: cover;
   background-position: center;
   background-color: #e1d4c6;
-  background-image: linear-gradient(
-      135deg,
+  background-image: linear-gradient(135deg,
       rgba(247, 239, 230, 0.3),
-      rgba(0, 0, 0, 0.1)
-    ),
+      rgba(0, 0, 0, 0.1)),
     url("https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=800");
   box-shadow: 0 16px 40px rgba(92, 68, 44, 0.15);
 }
@@ -2021,7 +2011,7 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
+  background:
     radial-gradient(circle at 20% 30%, rgba(164, 105, 70, 0.08), transparent 50%),
     radial-gradient(circle at 80% 70%, rgba(164, 105, 70, 0.06), transparent 50%);
   pointer-events: none;
@@ -2229,11 +2219,9 @@ textarea {
   background-size: cover;
   background-position: center;
   background-color: #e1d4c6;
-  background-image: linear-gradient(
-      135deg,
+  background-image: linear-gradient(135deg,
       rgba(247, 239, 230, 0.3),
-      rgba(0, 0, 0, 0.12)
-    ),
+      rgba(0, 0, 0, 0.12)),
     url("https://images.pexels.com/photos/3823054/pexels-photo-3823054.jpeg?auto=compress&cs=tinysrgb&w=800");
   box-shadow: 0 20px 50px rgba(92, 68, 44, 0.2);
 }
@@ -2246,7 +2234,7 @@ textarea {
   text-align: center;
 }
 
-.online-text > p {
+.online-text>p {
   font-size: 1.1rem;
   line-height: 1.8;
   color: rgba(37, 33, 32, 0.9);
@@ -2455,6 +2443,7 @@ textarea {
 
 /* RESPONSIVE UPDATES FOR NEW SECTIONS */
 @media (max-width: 1024px) {
+
   .values-grid,
   .class-details-grid,
   .pricing-section {
@@ -2507,6 +2496,7 @@ textarea {
 }
 
 @media (max-width: 640px) {
+
   .values-grid,
   .class-details-grid,
   .pricing-section {
@@ -2541,7 +2531,7 @@ textarea {
     margin-bottom: 0.8rem;
   }
 
-  .class-detail-card > p {
+  .class-detail-card>p {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 1rem;
@@ -2626,5 +2616,3 @@ textarea {
     font-size: 1.6rem;
   }
 }
-
-
